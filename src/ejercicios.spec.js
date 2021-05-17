@@ -1,5 +1,7 @@
 import * as fns from './ejercicios';
 
+
+
 describe('Tests', () => {
   it('fibo devuelve el numero de fibonacci en la posición n', () => {
     expect(fns.fibo(1)).toEqual(1);
