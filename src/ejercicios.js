@@ -26,21 +26,11 @@ export const multiplicacion = array => {
 // fp.first (para obtener el primer valor de un array)
 
 export const atributo = propiedad => objeto => objeto[propiedad];
+fp.flow()
+export const multiplicarAtributo = fp.flow(fp.curry((atributo, objeto) => objeto[atributo], multiplicacion));
 
-const pruebaMultiplicarAtributo = (atributo, objeto) => {
-    const resultado = objeto[atributo].reduce((acc, num) => acc * num);
-    
-    return resultado
+export const ordenarPor = fp.curry((atributo, persona) => fp.reverse(fp.sortBy([function(p) {return p[atributo]}], persona)));
 
-};
-
-export const multiplicarAtributo = fp.curry(pruebaMultiplicarAtributo);
-
-const pruebaOrdenarPor = (atributo, persona) => {
-    return fp.reverse(fp.sortBy([function(p) {return p[atributo]}], persona))
-}
-
-export const ordenarPor = fp.curry(pruebaOrdenarPor);
 
 export const mayorPersona = arrayPersonas => {
     const nuevoArray = fp.reverse(fp.sortBy([function(p) {return p.edad} ], arrayPersonas));
